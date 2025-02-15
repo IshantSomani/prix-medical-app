@@ -36,14 +36,12 @@ const PatientForm = () => {
       mobile: '',
       email: ''
     },
-    validationSchema: Yup.object().shape({
-      name: Yup.string().required("name is required"),
-    }),
+    validationSchema: { patientSchema },
     onSubmit: async (values) => {
       try {
         setLoading(true);
         setError("");
-        await axios.post(`${import.meta.env.VITE_API_URI}/api/auth/login`, values);
+        await axios.post(`${import.meta.env.VITE_API_URI}/??`, values);
         await new Promise(resolve => setTimeout(resolve, 1000));
         navigate("/home");
       } catch (err) {
@@ -64,24 +62,14 @@ const PatientForm = () => {
             <p className="text-[#5CB8B2] mt-2">Please fill all required fields (*)</p>
           </div>
 
-          <Formik
-            initialValues={{
-              name: '',
-              age: '',
-              gender: '',
-              mobile: '',
-              email: ''
-            }}
-            validationSchema={patientSchema}
-            onSubmit={handleSubmit}
-          >
+          <Formik>
             {error && (
               <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm">
                 {error}
               </div>
             )}
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={formik.handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Name Field */}
                 <div className="col-span-2">
