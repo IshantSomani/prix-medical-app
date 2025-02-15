@@ -43,7 +43,7 @@ const PatientForm = () => {
         setError("");
 
         await axios.post(
-          `${import.meta.env.VITE_API_URI}/api/patients/createPatient`,
+          `${import.meta.env.VITE_API_URI}/patients/createPatient`,
           values,
           {
             headers: {

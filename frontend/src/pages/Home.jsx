@@ -13,12 +13,11 @@ const Home = () => {
 
     const fetchPatients = async () => {
         try {
-            const response = await axios.get(`${import.meta.env.VITE_API_URI}/api/patients/getPatients`, {
+            const response = await axios.get(`${import.meta.env.VITE_API_URI}/patients/getPatients`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('prixToken')}`
                 }
             });
-            console.log(response.data.data);
             setPatients(response.data.data);
         } catch (err) {
             setError('Failed to fetch patients. Please try again later.', err);

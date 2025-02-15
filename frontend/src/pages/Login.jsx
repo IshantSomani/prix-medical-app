@@ -28,7 +28,7 @@ const Login = () => {
                 setLoading(true);
                 setError("");
 
-                const response = await axios.post(`${import.meta.env.VITE_API_URI}/api/auth/login`, values);
+                const response = await axios.post(`${import.meta.env.VITE_API_URI}/auth/login`, values);
 
                 const { token } = response.data;
                 const { role: userData } = response.data.data;
